@@ -1,16 +1,16 @@
 " Vim indent file
 " Language:     Husk
-" Maintainer:   Your Name
-" Last Change:  2024
+" Maintainer:   Felipe Coury
+" Last Change:  2025
 
 if exists("b:did_indent")
   finish
 endif
 let b:did_indent = 1
 
-setlocal cindent
-setlocal cinkeys=0{,0},0),0],!^F,o,O,e
-setlocal cinoptions=Ls,m1,j1,J1
+" Set the keys that will trigger re-indenting.
+" 'o' and 'O' are usually sufficient when using indentexpr.
+setlocal indentkeys=0{,0},!^F,o,O
 
 " Set the function to do the work
 setlocal indentexpr=GetHuskIndent()

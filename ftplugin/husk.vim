@@ -1,7 +1,7 @@
 " Vim filetype plugin file
 " Language:     Husk
-" Maintainer:   Your Name
-" Last Change:  2024
+" Maintainer:   Felipe Coury
+" Last Change:  2025
 
 if exists("b:did_ftplugin")
   finish
