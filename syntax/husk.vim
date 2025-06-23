@@ -7,16 +7,17 @@ if exists("b:current_syntax")
   finish
 endif
 
+" Comments (defined early to take precedence)
+syn match huskLineComment "\/\/.*$" contains=@Spell
+syn region huskBlockComment start="\/\*" end="\*\/" contains=huskBlockComment,@Spell
+syn cluster huskCommentGroup contains=huskLineComment,huskBlockComment
+
 " Keywords
 syn keyword huskKeyword let fn struct enum impl if else match for while loop break continue return self use
 syn keyword huskType int float bool string
 
 " Boolean values
 syn keyword huskBoolean true false
-
-" Comments
-syn match huskLineComment "//.*$"
-syn region huskBlockComment start="/\*" end="\*/" contains=huskBlockComment
 
 " Strings
 syn region huskString start='"' skip='\\"' end='"'
