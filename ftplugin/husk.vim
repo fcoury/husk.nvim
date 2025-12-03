@@ -8,6 +8,12 @@ if exists("b:did_ftplugin")
 endif
 let b:did_ftplugin = 1
 
+" Indentation: 4 spaces, no tabs
+setlocal expandtab
+setlocal shiftwidth=4
+setlocal softtabstop=4
+setlocal tabstop=4
+
 " Set comment string
 setlocal commentstring=//\ %s
 
