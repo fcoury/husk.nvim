@@ -9,22 +9,22 @@ Syntax highlighting for the Husk programming language in Neovim.
 #### vim-plug
 
 ```vim
-Plug 'fcoury/husk-highlight', { 'rtp': 'nvim' }
+Plug 'fcoury/husk.nvim', { 'rtp': 'nvim' }
 ```
 
 #### packer.nvim
 
 ```lua
-use { 'fcoury/husk-highlight', rtp = 'nvim' }
+use { 'fcoury/husk.nvim', rtp = 'nvim' }
 ```
 
 #### lazy.nvim
 
 ```lua
 {
-  'fcoury/husk-highlight',
+  'fcoury/husk.nvim',
   config = function()
-    vim.opt.runtimepath:append(vim.fn.stdpath('data') .. '/lazy/husk-highlight/nvim')
+    vim.opt.runtimepath:append(vim.fn.stdpath('data') .. '/lazy/husk.nvim/nvim')
   end
 }
 ```
@@ -62,4 +62,3 @@ cp -r nvim/* ~/.local/share/nvim/site/pack/husk/start/husk-vim/
 ## Usage
 
 The plugin will automatically activate for files with `.husk` or `.hk` extensions.
-
