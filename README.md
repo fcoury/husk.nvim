@@ -58,7 +58,30 @@ cp -r nvim/* ~/.local/share/nvim/site/pack/husk/start/husk-vim/
 - File type detection for `.husk` and `.hk` files
 - Automatic indentation
 - Comment formatting support
+- **Format on save** (requires `huskc` in PATH)
 
 ## Usage
 
 The plugin will automatically activate for files with `.husk` or `.hk` extensions.
+
+## Format on Save
+
+Files are automatically formatted with `huskc fmt` when saved. This requires `huskc` to be installed and available in your PATH.
+
+### Disable Format on Save
+
+To disable auto-formatting, add this to your Neovim config:
+
+```vim
+let g:husk_format_on_save = 0
+```
+
+Or in Lua:
+
+```lua
+vim.g.husk_format_on_save = 0
+```
+
+### Manual Formatting
+
+You can manually format the current file with the `:HuskFmt` command.

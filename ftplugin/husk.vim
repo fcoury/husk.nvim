@@ -32,3 +32,44 @@ setlocal foldlevel=99
 
 " Match pairs for % command
 setlocal matchpairs+=<:>
+
+" Format on save (disable with: let g:husk_format_on_save = 0)
+if !exists("g:husk_format_on_save")
+  let g:husk_format_on_save = 1
+endif
+
+function! s:HuskFormat()
+  if !g:husk_format_on_save
+    return
+  endif
+
+  " Save cursor position and view
+  let l:view = winsaveview()
+
+  " Run huskc fmt on the current file
+  let l:output = system('huskc fmt ' . shellescape(expand('%:p')))
+
+  " Check for errors
+  if v:shell_error != 0
+    " Don't reload if formatter failed
+    echohl WarningMsg
+    echo "huskc fmt failed: " . l:output
+    echohl None
+    return
+  endif
+
+  " Reload the file to get formatted content
+  silent edit!
+
+  " Restore cursor position and view
+  call winrestview(l:view)
+endfunction
+
+" Format command
+command! -buffer HuskFmt call s:HuskFormat()
+
+" Auto-format on save
+augroup husk_format
+  autocmd! * <buffer>
+  autocmd BufWritePost <buffer> call s:HuskFormat()
+augroup END
